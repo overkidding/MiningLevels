@@ -5,6 +5,7 @@ import de.chafficplugins.mininglevels.api.MiningLevel;
 import de.chafficplugins.mininglevels.api.MiningPlayer;
 import de.chafficplugins.mininglevels.io.FileManager;
 import de.chafficplugins.mininglevels.io.MessagesYaml;
+import de.chafficplugins.mininglevels.listeners.InvListener;
 import de.chafficplugins.mininglevels.listeners.MiningLevelsCommandListener;
 import de.chafficplugins.mininglevels.listeners.RewardCommandListener;
 import de.chafficplugins.mininglevels.listeners.events.MiningEvents;
@@ -72,7 +73,7 @@ public final class MiningLevels extends JavaPlugin {
 
                 registerCommand("mininglevels", new MiningLevelsCommandListener());
                 registerCommand("miningrewards", new RewardCommandListener());
-                registerEvents(new MiningEvents(), new ServerEvents(), new NoXpBlockEvents());
+                registerEvents(new MiningEvents(), new ServerEvents(), new NoXpBlockEvents(), new InvListener());
                 new Stats(this, BSTATS_ID);
                 log(ChatColor.DARK_GREEN + getDescription().getName() + " is now enabled (Version: " + getDescription().getVersion() + ") made by "
                         + ChatColor.AQUA + getDescription().getAuthors() + ".");

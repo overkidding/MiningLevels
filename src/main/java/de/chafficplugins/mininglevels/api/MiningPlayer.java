@@ -37,6 +37,7 @@ public class MiningPlayer {
      * The bukkit player's uuid.
      */
     private final UUID uuid;
+    private final String name;
     /**
      * The ordinal of the player's mining level.
      */
@@ -57,8 +58,9 @@ public class MiningPlayer {
      * @param xp The xp of the player.
      * @throws IllegalArgumentException If the player already exists.
      */
-    public MiningPlayer(UUID uuid, int level, int xp) {
+    public MiningPlayer(UUID uuid, String name, int level, int xp) {
         this.uuid = uuid;
+        this.name = name;
         this.level = level;
         this.xp = xp;
         if (miningPlayers.contains(this)) {
@@ -72,6 +74,10 @@ public class MiningPlayer {
      */
     public UUID getUUID() {
         return uuid;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /**
@@ -279,7 +285,7 @@ public class MiningPlayer {
         miningPlayers.sort((o1, o2) -> {
             if(o1.getLevel().getOrdinal() == o2.getLevel().getOrdinal()) {
                 if (o2.getXp() == o1.getXp()) {
-                    return o1.getPlayer().getName().compareTo(o2.getPlayer().getName());
+                    return o1.getName().compareTo(o2.getName());
                 }
                 return o2.getXp() - o1.getXp();
             } else {

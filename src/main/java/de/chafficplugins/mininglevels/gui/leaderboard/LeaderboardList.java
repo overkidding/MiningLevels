@@ -16,6 +16,7 @@ public class LeaderboardList extends Page {
 
     public LeaderboardList() {
         super(6, "Leaderboard", Material.WHITE_STAINED_GLASS_PANE);
+        this.isMovable = false;
     }
 
     @Override
@@ -31,7 +32,7 @@ public class LeaderboardList extends Page {
                         Localizer.getLocalizedString(LOCALIZED_IDENTIFIER + "_" + CURRENT_XP, miningPlayer.getXp() + "", miningPlayer.getLevel().getNextLevelXP() + "")
                 ));
 
-                addItem(new InventoryItem(i, stack, (event) -> new MiningLevelProfile(miningPlayer.getOfflinePlayer(), this).open(event.getPlayer())));
+                addItem(new InventoryItem(i, stack, (event) -> new MiningLevelProfile(miningPlayer.getOfflinePlayer(), this).open(event.getPlayer()), false));
             }
         }
     }

@@ -77,6 +77,7 @@ public class MiningBlock {
     public ArrayList<Material> getMaterials() {
         ArrayList<Material> materials = new ArrayList<>();
         for (String material : this.materials) {
+
             materials.add(Material.valueOf(material));
         }
         return materials;
@@ -155,6 +156,8 @@ public class MiningBlock {
      */
     public static MiningBlock getMiningBlock(Material material) {
         for (MiningBlock miningBlock : miningBlocks) {
+            if(miningBlock == null || miningBlock.getMaterials() == null || miningBlock.getMaterials().isEmpty())
+                continue;
             if (miningBlock.getMaterials().contains(material)) {
                 return miningBlock;
             }
